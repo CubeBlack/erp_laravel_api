@@ -13,7 +13,6 @@ class PessoasControllerTest extends TestCase
     //trait para resetar banco de dados
     use RefreshDatabase;
 
-
     public function test_get_pessoas_endpoint(): void
     {
         //Registra 3 pessoas para testar

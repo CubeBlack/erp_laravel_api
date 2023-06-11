@@ -22,9 +22,8 @@ use App\Http\Controllers\API\PessoasController;
 Route::get('pessoas', [PessoasController::class, 'index']);
 Route::post('pessoas', [PessoasController::class, 'store']);
 Route::get('pessoas/{id}', [PessoasController::class, 'show']);
-
-//Put sozinho
-//Route::put('pessoas/{id}', [PessoasController::class, 'update']);
-
 Route::match(['put', 'patch'], 'pessoas/{id}', [PessoasController::class, 'update']);
+
+use App\Http\Controllers\API\LogsController;
+Route::get('logs/', [LogsController::class, 'index']);
 
