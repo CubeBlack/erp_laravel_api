@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Pessoa;
 use Illuminate\Testing\Fluent\AssertableJson;
+use App\Models\Log;
 
 class PessoasControllerTest extends TestCase
 {
@@ -82,7 +83,6 @@ class PessoasControllerTest extends TestCase
             ]);
 
 
-
             //Verificar valor por valor
             $json->whereAll([
                 'id'=>$pessoa->id,
@@ -111,6 +111,9 @@ class PessoasControllerTest extends TestCase
 
         });
 
+        //verificar se foi salvo o log
+        $logs = Log::all();
+        $this->assertCount(1, $logs);
     }
 
     public function test_put_pessoas_endpoint(){
@@ -133,6 +136,9 @@ class PessoasControllerTest extends TestCase
             ])->etc();
 
         });
+
+        $logs = Log::all();
+        $this->assertCount(1, $logs);
     }
 
     public function test_patch_pessoas_endpoint(){
@@ -150,6 +156,9 @@ class PessoasControllerTest extends TestCase
             $json->where('nome', $pessoa['nome']);
 
         });
+
+        $logs = Log::all();
+        $this->assertCount(1, $logs);
     }
 
     public function test_delete_pessoa_endpoint(){

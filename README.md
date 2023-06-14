@@ -7,7 +7,7 @@ Por enquanto uma simples Api para gereciar as minhas ligações, de clientes, e 
 
 - Edição de 'pessoa'
 
-- Listar pessoas do cadastro mais antigo par o mais novo
+- Listar pessoas do cadastro mais novo para o mais antigo
 
 - Deve existir um log para auditoria e acompanhamento das operações do sistema
 
@@ -19,7 +19,7 @@ Por enquanto uma simples Api para gereciar as minhas ligações, de clientes, e 
 
 - No log de de editar pessoa deve conter o codigo, e nome da pessoa editada, e o que foi editado
 
-- Listar log do mais velho para o mais novo
+- Listar log do novo para o mais antigo
 
 ### Rotas
 - Get /pessoas
