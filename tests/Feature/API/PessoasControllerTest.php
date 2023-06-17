@@ -53,6 +53,12 @@ class PessoasControllerTest extends TestCase
             
 
         });
+
+
+        //verificar ordem
+        $this->assertEquals(3, $response[0]['id']);
+        $this->assertEquals(2, $response[1]['id']);
+        $this->assertEquals(1, $response[2]['id']);
     }
 
     public function test_get_sigle_pessoas_endpoint(): void

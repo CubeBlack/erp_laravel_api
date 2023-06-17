@@ -15,7 +15,7 @@ class PessoasController extends Controller
 
 
     public function index(){
-        return response()->json($this->pessoa->all());
+        return response()->json($this->pessoa->orderBy('id', 'desc')->get());
     }
 
     public function show($id){

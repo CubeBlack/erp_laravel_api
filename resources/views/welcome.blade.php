@@ -7,6 +7,13 @@
     <title>Sistema API</title>
 </head>
 <body>
-    
+    <pre>
+### Rotas
+- Get /pessoas
+- POST /pessoas
+- GET /pessoas/{id}
+- POST /pessoas/{id}
+- GET /log
+    </pre>
 </body>
 </html>

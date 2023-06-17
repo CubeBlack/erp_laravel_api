@@ -27,12 +27,19 @@ class LogsControllerTest extends TestCase
             $json->whereType('0.titulo', 'string');
             $json->whereType('0.descricao', 'string');
 
-            $log = $logs->first();
+            $log = $logs->last();
 
             $json->whereAll([
                 '0.titulo' =>$log->titulo,
                 '0.descricao' =>$log->descricao
             ]);
         });
+
+        //verificar ordem
+        $this->assertEquals(3, $response[0]['id']);
+        $this->assertEquals(2, $response[1]['id']);
+        $this->assertEquals(1, $response[2]['id']);
     }
+
+
 }

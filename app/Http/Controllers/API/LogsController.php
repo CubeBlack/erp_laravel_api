@@ -11,6 +11,6 @@ class LogsController extends Controller
 {
     //
     public function index(Log $log){
-        return response()->json($log->all());
+        return response()->json($log->orderBy('id', 'desc')->get());
     }
 }
