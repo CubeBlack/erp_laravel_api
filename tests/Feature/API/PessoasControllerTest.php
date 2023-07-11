@@ -34,23 +34,26 @@ class PessoasControllerTest extends TestCase
 
         //Verificar extrutura da resposat
         $response->assertJson(function(AssertableJson $json){
-            //verificar estrutura e tipo a apartir do primeiro item
-            $json->whereType('0.id', 'integer');
-            $json->whereType('0.nome', 'string');
-            $json->whereType('0.status', 'string');
-
 
             //verificar os tipos de forma mais pratica
             $json->whereAllType([
                 '0.id'=> 'integer',
                 '0.nome'=> 'string',
-                '0.status'=> 'string'
+                '0.status'=> 'string',
+                '0.pessoa_tipo'=>'string',
+                '0.cpf'=>'string',
+                '0.cnpj'=>'string'
             ]);
 
             //Verificar se a resposta tem os campos
-            $json->hasAll(['0.id', '0.nome', '0.status']);
-
-            
+            $json->hasAll([
+                '0.id', 
+                '0.nome', 
+                '0.status',
+                '0.pessoa_tipo',
+                '0.cpf',
+                '0.cnpj'
+            ]);
 
         });
 
@@ -79,13 +82,28 @@ class PessoasControllerTest extends TestCase
         //Verificar extrutura da resposat
         $response->assertJson(function(AssertableJson $json) use ($pessoa){
             //Verificar se a resposta tem os campos
-            $json->hasAll(['id', 'nome', 'status', 'created_at', 'updated_at']);
+            $json->hasAll([
+                'id', 
+                
+                'nome', 
+                'status', 
+                'pessoa_tipo',
+                'cpf',
+                'cnpj',
+                
+                'created_at', 
+                'updated_at'
+            ]);
             
             //verificar os tipos de forma mais pratica
             $json->whereAllType([
                 'id'=> 'integer',
+
                 'nome'=> 'string',
-                'status'=> 'string'
+                'status'=> 'string',
+                'pessoa_tipo'=>'string',
+                'cpf'=>'string',
+                'cnpj'=>'string'
             ]);
 
 
@@ -93,7 +111,10 @@ class PessoasControllerTest extends TestCase
             $json->whereAll([
                 'id'=>$pessoa->id,
                 'nome'=>$pessoa->nome,
-                'status'=>$pessoa->status
+                'status'=>$pessoa->status,
+                'pessoa_tipo'=>$pessoa->pessoa_tipo,
+                'cpf'=>$pessoa->cpf,
+                'cnpj'=>$pessoa->cnpj
             ]);
 
         });
@@ -107,13 +128,27 @@ class PessoasControllerTest extends TestCase
 
         $response->assertJson(function(AssertableJson $json) use ($pessoa){
             //
-            $json->hasAll(['id', 'nome', 'status', 'created_at', 'updated_at']);
+            $json->hasAll([
+                'id', 
+                
+                'nome', 
+                'status', 
+                'pessoa_tipo',
+                'cpf',
+                'cnpj',
+                
+                'created_at', 
+                'updated_at'
+            ]);
 
             //Fica faltando os valores gerados altomaticos
             $json->whereAll([
                 'nome'=>$pessoa['nome'],
-                'status'=>$pessoa['status']
-            ])->etc();
+                'status'=>$pessoa['status'],
+                'pessoa_tipo'=>$pessoa['pessoa_tipo'],
+                'cpf'=>$pessoa['cpf'],
+                'cnpj'=>$pessoa['cnpj']
+            ]);
 
         });
 
@@ -134,12 +169,24 @@ class PessoasControllerTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJson(function(AssertableJson $json) use ($pessoa){
-            $json->hasAll(['id', 'nome', 'status', 'created_at', 'updated_at']);
+            $json->hasAll([
+                'id', 
+                
+                'nome', 
+                'status', 
+                'pessoa_tipo',
+                'cpf',
+                'cnpj',
+                
+                'created_at', 
+                'updated_at'
+            ]);
 
             $json->whereAll([
                 'nome'=>$pessoa['nome'],
                 'status'=>$pessoa['status']
-            ])->etc();
+
+            ]);
 
         });
 
@@ -158,8 +205,24 @@ class PessoasControllerTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJson(function(AssertableJson $json) use ($pessoa){
-            $json->hasAll(['id', 'nome', 'status', 'created_at', 'updated_at']);
-            $json->where('nome', $pessoa['nome']);
+            $json->hasAll([
+                'id', 
+                
+                'nome', 
+                'status', 
+                'pessoa_tipo',
+                'cpf',
+                'cnpj',
+                
+                'created_at', 
+                'updated_at'
+            ]);
+
+            //Verificar a penas os dados atualizados
+            $json->whereAll([
+                'nome'=>$pessoa['nome']
+
+            ]);
 
         });
 

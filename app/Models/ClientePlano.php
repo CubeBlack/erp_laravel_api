@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pessoa extends Model
+class ClientePlano extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome', 'status', 'pessoa_tipo', 'cpf', 'cnpj'];
+    protected $fillable = ['nome', 'status', 'valor'];
 }

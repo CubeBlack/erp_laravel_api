@@ -18,7 +18,10 @@ class PessoaFactory extends Factory
     {
         return [
             'nome' => $this->faker->sentence,
-            'status' => 'ATIVO'
+            'status' => 'ATIVO',
+            'pessoa_tipo'=>'FISICA',
+            'cpf' => '15192206006',
+            'cnpj'=>'44737254000162'
         ];
     }
 }

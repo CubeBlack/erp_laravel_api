@@ -27,3 +27,9 @@ Route::match(['put', 'patch'], 'pessoas/{id}', [PessoasController::class, 'updat
 use App\Http\Controllers\API\LogsController;
 Route::get('logs/', [LogsController::class, 'index']);
 
+use App\Http\Controllers\API\ClientePlanosController;
+Route::get('clienteplanos', [ClientePlanosController::class, 'index']);
+Route::post('clienteplanos', [ClientePlanosController::class, 'store']);
+Route::get('clienteplanos/{id}', [ClientePlanosController::class, 'show']);
+Route::match(['put', 'patch'], 'clienteplanos/{id}', [ClientePlanosController::class, 'update']);
+
