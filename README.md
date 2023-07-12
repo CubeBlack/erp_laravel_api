@@ -12,20 +12,24 @@
 - registrar log ao registrar o plano de pagamento
 - Adicionar os campos
     - pessoa_tipo(fisica, juridica)
-    - cpf/cnpj
+    - cpfcnpj, deve ser o mesmo campo
 
 - Para pessoa, o formato de cpf/cnpj deve ser validado
 - não poderá ser reristrada uma pessoa sem cpf/cnpj
 - Não salvar caracteres especiais do cpf/cnpj
 - CPF/CNPJ não poderá se repetir
 
-- pessoa_cliente de ve ter:
-    - id: o mesmo id da pessoa???
-    - plano: codigo do cliente_plano
+- Cliente deve ter:
+    - os campos da pessoa, com essesão do codigo(hedar)
+	- STATUS(ATIVO,INATIVO)
+    - pessoa_id
+    - plano_id: codigo do cliente_plano
 
-
-- Cadastro de cliente partir de um cadastro de pessoa
-- Ao registrar novo cliente verificar se a pessoa ja existe a apartir do CPF/CNPJ
+- Ao criar, caso a pessoa não exista criala, e a validação é feita pelo cpf, ou cnpj
+- Ao atuaizar o cliente, atualizar a pessoa
+- Adicionar log de cliente
+- Não permitir atualizar a pessoa vinculada ao Cliente
+- Nõa permitir vincular a um plano inexistente
 
 ## Api 1.0
 Por enquanto uma simples Api para gereciar as minhas ligações, de clientes, e fornecedores.
